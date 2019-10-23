@@ -24,3 +24,9 @@ __pycache__
 dist
 build
 .idea
+
+# travis?
+.travis.yml
+
+# private client token information
+config.py
