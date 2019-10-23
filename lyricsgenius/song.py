@@ -113,9 +113,9 @@ class Song(object):
                 filename = filename.replace("." + ext, "")
             filename += "." + extension
         else:
-            filename = "Lyrics_{}_{}.{}".format(self.artist.replace(" ", ""),
-                                                self.title.replace(" ", ""),
-                                                extension).lower()
+            filename = "{}_{}.{}".format(self.title.replace(" ", "_"),
+                                         self.artist.replace(" ", "_"),
+                                         extension).lower()
             filename = self._sanitize_filename(filename)
 
         # Check if file already exists
