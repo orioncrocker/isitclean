@@ -5,6 +5,7 @@
 
 # file that holds client access token
 import config
+
 import os
 import argparse
 from lyricsgenius.api import Genius
