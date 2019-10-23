@@ -3,6 +3,8 @@
 #    python3 -m lyricsgenius song "Begin Again" "Andy Shauf" --save
 #    python3 -m lyricsgenius artist "The Beatles" --max-songs 5 --save
 
+# file that holds client access token
+import config
 import os
 import argparse
 from lyricsgenius.api import Genius
@@ -24,7 +26,7 @@ def main(args=None):
     args = parser.parse_args()
 
     # Create an instance of the Genius class
-    client_access_token = os.environ.get("GENIUS_CLIENT_ACCESS_TOKEN", None)
+    client_access_token = os.environ.get("GENIUS_CLIENT_ACCESS_TOKEN", config.client_access_token)
     msg = "Must declare environment variable: GENIUS_CLIENT_ACCESS_TOKEN"
     assert client_access_token, msg
     api = Genius(client_access_token)
