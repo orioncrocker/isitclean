@@ -101,7 +101,7 @@ class Song(object):
         keepchars = (" ", ".", "_")
         return "".join(c for c in f if c.isalnum() or c in keepchars).rstrip()
 
-    def save_lyrics(self, filename=None, extension='json', verbose=True,
+    def save_lyrics(self, filename=None, extension='txt', verbose=True,
                     overwrite=None, binary_encoding=False):
         """Allows user to save song lyrics from Song object to a .json or .txt file."""
         extension = extension.lstrip(".")
