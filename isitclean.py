@@ -8,10 +8,36 @@
 ################################################################################
 
 # user specific client access token in another file
-from token import client_access_token
+import config
 
 import lyricsgenius
+import os
+import argparse
 
-genius = lyricsgenius.Genius(config.client_access_token);
-artist = genius.search_artist("Aesop Rock", max_songs=3, sort="title")
-print(artist.songs)
+def main(args=None):
+
+  parser = argparse.ArgumentParser()
+  parser.add_argument("search_type", type=str.lower, choices=["song", "artist"],
+                      help="Specify whether search is for 'song' or 'artist'")
+  parser.add_argument("terms", type=str, nargs="+",
+                      help="Provide terms for search")
+  args = parser.parse_args()
+
+  genius = lyricsgenius.Genius(config.client_access_token)
+
+  if args.search_type == "song":
+    song = genius.search_song(*args.terms)
+    if not song:
+      print("Could not find specified song. Check spelling?")
+
+    else:
+      # need to parse song for dirty words
+      print("Found {} by {}\n" .format(song.title, song.artist))
+      print(song.lyrics)
+
+  else:
+    print("Add some arguments man!\n",
+          "For example: python3 isitclean 'Rings' 'Aesop Rock'")
+
+if __name__ == "__main__":
+  main()
