@@ -1,16 +1,9 @@
-# macOS
-*.DS_Store
-
 # API credentials
 *.ini
 
 # May not want to commit lyrics text files
 *.txt
 *.json
-
-# Jupyter
-/Notebooks
-.ipynb_checkpoints/
 
 # Test files
 .cache/
@@ -25,8 +18,8 @@ dist
 build
 .idea
 
-# travis?
-.travis.yml
-
 # private client token information
 config.py
+
+# .github folder
+.github
