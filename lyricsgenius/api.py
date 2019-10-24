@@ -229,7 +229,7 @@ class Genius(API):
         result_artist = self._clean_str(result['primary_artist']['name'])
         return title_is_match and result_artist == self._clean_str(artist)
 
-    def search_song(self, title, artist="", get_full_info=True):
+    def search_song(self, title, artist="", get_full_info=True, isitclean=False):
         """ Search Genius.com for lyrics to a specific song
         :param title: Song title to search for
         :param artist: Name of the artist
@@ -272,6 +272,9 @@ class Genius(API):
                 print('Specified song does not have a valid URL with lyrics. Rejecting.')
             return None
 
+        # Search song for profanities
+
+
         # Return a Song object with lyrics if we've made it this far
         song = Song(song_info, lyrics)
         if self.verbose:
@@ -282,7 +285,9 @@ class Genius(API):
                       sort='popularity', per_page=20,
                       get_full_info=True,
                       allow_name_change=True,
-                      artist_id=None):
+                      artist_id=None,
+                      isitclean=False):
+
         """Search Genius.com for songs by the specified artist.
         Returns an Artist object containing artist's songs.
         :param artist_name: Name of the artist to search for
@@ -357,9 +362,16 @@ class Genius(API):
 
                 # Attempt to add the Song to the Artist
                 result = artist.add_song(song, verbose=False)
-                if result == 0 and self.verbose:
+
+                # Print if song has profanities
+                if result == 0 and self.verbose and isitclean is True:
+                    print('Song {n}: "{t}" --{p}'.format(n=artist.num_songs,
+                          t=song.title, p=song.clean))
+
+                elif result == 0 and self.verbose:
                     print('Song {n}: "{t}"'.format(n=artist.num_songs,
-                                                   t=song.title))
+                          t=song.title))
+
 
                 # Exit search if the max number of songs has been met
                 reached_max_songs = max_songs and artist.num_songs >= max_songs

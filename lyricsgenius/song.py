@@ -5,6 +5,7 @@
 import json
 import os
 from filecmp import cmp
+from . import cleancheck
 
 
 class Song(object):
@@ -42,6 +43,11 @@ class Song(object):
     @property
     def lyrics(self):
         return self._body.get('lyrics')
+
+    @property
+    def clean(self):
+        clean = cleancheck.check_lyrics(self.lyrics)
+        return clean
 
     @property
     def album(self):
