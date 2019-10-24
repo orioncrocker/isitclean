@@ -40,7 +40,7 @@ Search for an artist, by default most popular songs will be fetched
 python3 -m isitclean artist "Smashing Pumpkins"
 ```
 
-Search for ten songs by 'Protest The Hero' and save the lyrics:
+Search for ten songs by 'Protest The Hero'
 
 ```bash
 python3 -m isitclean artist "Protest The Hero" --max-songs 10
