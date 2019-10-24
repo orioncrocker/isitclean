@@ -71,6 +71,11 @@ Search for ten songs by 'Protest The Hero' and save the lyrics:
 ```bash
 python3 -m isitclean artist "Protest The Hero" --max-songs 10
 ```
+## Planned features:
+Search by album rather than limited to just song or artist search
+```bash
+python3 -m isitclean album "Float" "Aesop Rock"
+```
 
 ## Example projects from lyricsgenius author johnwmillr
 
