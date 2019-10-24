@@ -9,6 +9,7 @@
 
 ## Setup
 Before using this package you'll need to sign up for a (free) account that authorizes access to [the Genius API](http://genius.com/api-clients). The Genius account provides a `client_access_token` that is required by the package. See the [Usage section](https://github.com/johnwmillr/LyricsGenius#usage) below for examples.
+By default, isitclean imports a config file with a variable named client\_access\_token. Create your own config.py and store your unique client access token from Genius there.
 
 ## Installation
 `lyricsgenius` requires Python 3.
@@ -16,20 +17,21 @@ Before using this package you'll need to sign up for a (free) account that autho
 Use `pip` to install the package from PyPI:
 
 ```bash
-pip install lyricsgenius
+NOT YET IMPLEMENTED
+pip install isitclean
 ```
 
-Or, install the latest version of the package from GitHub:
+Or, clone the latest version of the package from GitHub:
 
 ```bash
-pip install git+https://github.com/johnwmillr/LyricsGenius.git
+git clone https://github.com/orioncrocker/isitclean
 ```
 
 ## Usage
 Import the package and search for songs by a given artist:
 
 ```python
-import lyricsgenius
+import isitclean
 genius = lyricsgenius.Genius("my_client_access_token_here")
 artist = genius.search_artist("Andy Shauf", max_songs=3, sort="title")
 print(artist.songs)
@@ -57,32 +59,20 @@ artist.save_lyrics()
 There are various options configurable as parameters within the `Genius` class:
 
 ```python
+genius.clean = False # Doesn't print if songs have profanities or not
 genius.verbose = False # Turn off status messages
 genius.remove_section_headers = True # Remove section headers (e.g. [Chorus]) from lyrics when searching
 genius.skip_non_songs = False # Include hits thought to be non-songs (e.g. track lists)
 genius.excluded_terms = ["(Remix)", "(Live)"] # Exclude songs with these words in their title
 ```
 
-You can also call the package from the command line:
+Search for five songs by 'Protest The Hero' and save the lyrics:
 
 ```bash
-export GENIUS_CLIENT_ACCESS_TOKEN="my_client_access_token_here"
-python3 -m lyricsgenius --help
+python3 -m isitclean artist "Protest The Hero" --max-songs 10
 ```
 
-Search for and save lyrics to a given song:
-
-```bash
-python3 -m lyricsgenius song "Begin Again" "Andy Shauf" --save
-```
-
-Search for five songs by 'The Beatles' and save the lyrics:
-
-```bash
-python3 -m lyricsgenius artist "The Beatles" --max-songs 5 --save
-```
-
-## Example projects
+## Example projects from lyricsgenius author johnwmillr
 
   - [Trucks and Beer: A textual analysis of popular country music](http://www.johnwmillr.com/trucks-and-beer/)
   - [Neural machine translation: Explaining the Meaning Behind Lyrics](https://github.com/tsandefer/dsi_capstone_3)
@@ -90,6 +80,3 @@ python3 -m lyricsgenius artist "The Beatles" --max-songs 5 --save
   - [Sentiment analysis on hip-hop lyrics](https://github.com/Hugo-Nattagh/2017-Hip-Hop)
   - [Does Country Music Drink More Than Other Genres?](https://towardsdatascience.com/does-country-music-drink-more-than-other-genres-a21db901940b)
   - [49 Years of Lyrics: Why So Angry?](https://towardsdatascience.com/49-years-of-lyrics-why-so-angry-1adf0a3fa2b4)
-
-## Contributing
-Please contribute! If you want to fix a bug, suggest improvements, or add new features to the project, just [open an issue](https://github.com/johnwmillr/LyricsGenius/issues) or send me a pull request.
