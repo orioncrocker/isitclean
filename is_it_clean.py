@@ -32,12 +32,12 @@ def main(args=None):
 
     else:
       # need to parse song for dirty words
-      print("Found {} by {}\n" .format(song.title, song.artist))
+      print("Found!\n{}\n{}\n{}\n" .format(song.title, song.artist, song.album))
       print(song.lyrics)
 
   else:
     print("Add some arguments man!\n",
-          "For example: python3 isitclean 'Rings' 'Aesop Rock'")
+          "For example: python3 -m isitclean song 'Rings' 'Aesop Rock'")
 
 if __name__ == "__main__":
   main()
