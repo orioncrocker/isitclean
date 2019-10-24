@@ -28,6 +28,24 @@ git clone https://github.com/orioncrocker/isitclean
 ```
 
 ## Usage
+Search for song with arguments 'song' and 'artist'
+
+```bash
+python3 -m isitclean song "Feed The Horses" "Thank You Scientist"
+```
+
+Search for an artist, by default most popular songs will be fetched
+
+```bash
+python3 -m isitclean artist "Smashing Pumpkins"
+```
+
+Search for ten songs by 'Protest The Hero' and save the lyrics:
+
+```bash
+python3 -m isitclean artist "Protest The Hero" --max-songs 10
+```
+
 Import the package and search for songs by a given artist:
 
 ```python
@@ -66,11 +84,6 @@ genius.skip_non_songs = False # Include hits thought to be non-songs (e.g. track
 genius.excluded_terms = ["(Remix)", "(Live)"] # Exclude songs with these words in their title
 ```
 
-Search for ten songs by 'Protest The Hero' and save the lyrics:
-
-```bash
-python3 -m isitclean artist "Protest The Hero" --max-songs 10
-```
 ## Planned features:
 Search by album rather than limited to just song or artist search
 ```bash
