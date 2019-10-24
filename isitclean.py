@@ -30,9 +30,6 @@ def main(args=None):
                               isitclean=True)
     if not song:
       print("Could not find specified song. Check spelling?")
-    else:
-      print("\n{} - {} {}" .format(song.title, song.artist,
-            song.clean))
 
   elif args.search_type == "artist":
     artist = genius.search_artist(args.terms[0],

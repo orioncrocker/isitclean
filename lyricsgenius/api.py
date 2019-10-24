@@ -272,13 +272,20 @@ class Genius(API):
                 print('Specified song does not have a valid URL with lyrics. Rejecting.')
             return None
 
-        # Search song for profanities
-
-
         # Return a Song object with lyrics if we've made it this far
         song = Song(song_info, lyrics)
         if self.verbose:
             print('Done.')
+
+        # Search song for profanities
+        if self.verbose and isitclean is True:
+            print('{n}: "{t}" --{p}'.format(n=song.artist,
+                  t=song.title, p=song.clean))
+
+        elif  self.verbose:
+            print('{n}: "{t}"'.format(n=artist.num_songs,
+                  t=song.title))
+
         return song
 
     def search_artist(self, artist_name, max_songs=None,
