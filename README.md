@@ -66,7 +66,7 @@ genius.skip_non_songs = False # Include hits thought to be non-songs (e.g. track
 genius.excluded_terms = ["(Remix)", "(Live)"] # Exclude songs with these words in their title
 ```
 
-Search for five songs by 'Protest The Hero' and save the lyrics:
+Search for ten songs by 'Protest The Hero' and save the lyrics:
 
 ```bash
 python3 -m isitclean artist "Protest The Hero" --max-songs 10
