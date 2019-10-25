@@ -14,15 +14,18 @@ def check_lyrics(lyrics):
   fcc = ['shit', 'piss', 'fuck', 'cunt', 'cock',
          'tits', 'titty', 'titties']
 
+  clean = True
   lyric_array = lyrics.splitlines()
 
   for line in lyric_array:
     current_line = line.lower()
-    current_line = line.split()
+    current_line = current_line.split()
     for word in current_line:
       for words in fcc:
         if words in word:
           print(line)
-          return 'dirty'
+          clean = False
 
+  if clean is False:
+    return 'dirty'
   return 'clean'
